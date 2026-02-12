@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedforia – Client Enquiry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+<div class="bg-scene">
+    <!-- New background image - elegant wedding photography -->
+    <img class="bg-img"
+        src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1920&q=80&auto=format&fit=crop"
+        alt="Wedding photography background"
+        onerror="this.src='https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1920&q=80&auto=format&fit=crop'">
+    <div class="bg-overlay"></div>
+    <div class="bg-shimmer"></div>
+    
+    <!-- Floating elements for depth -->
+    <div class="floating-element fe-1"></div>
+    <div class="floating-element fe-2"></div>
+    <div class="floating-element fe-3"></div>
+</div>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+        <div class="spinner-text">Loading...</div>
+    </div>
+</div>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-top">
+            <!-- Logo from assets folder -->
+            <img src="logo.jpeg" alt="Wedforia Logo" class="logo-img pulse-glow"
+                onerror="this.style.display='none'">
+
+            <div class="brand-text">
+                <div class="brand-name fade-in-up" data-delay="0.1s">WEDFORIA</div>
+                <div class="brand-tagline fade-in-up" data-delay="0.3s">Premium Photography &amp; Event Coverage</div>
+            </div>
+        </div>
+
+        <div class="header-divider fade-in-up" data-delay="0.5s"><div class="diamond shimmer"></div></div>
+        <div class="form-headline fade-in-up" data-delay="0.7s">Quick Client Enquiry Form</div>
+    </header>
+
+    <!-- STEPPER -->
+    <div class="stepper">
+        <div class="step-item active" id="step-1">
+            <div class="step-circle">
+                <div class="step-circle-inner">1</div>
+                <div class="step-checkmark">✓</div>
+            </div>
+            <div class="step-label">Client</div>
+            <div class="step-connector"></div>
+        </div>
+        <div class="step-item" id="step-2">
+            <div class="step-circle">
+                <div class="step-circle-inner">2</div>
+                <div class="step-checkmark">✓</div>
+            </div>
+            <div class="step-label">Event</div>
+            <div class="step-connector"></div>
+        </div>
+        <div class="step-item" id="step-3">
+            <div class="step-circle">
+                <div class="step-circle-inner">3</div>
+                <div class="step-checkmark">✓</div>
+            </div>
+            <div class="step-label">Final</div>
+            <div class="step-connector"></div>
+        </div>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progressBar" style="width:33%">
+            <div class="progress-glow"></div>
+        </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="card" id="mainCard">
+        <div class="card-shine"></div>
+        
+        <!-- ══ SECTION 1: Client Details ══ -->
+        <div class="form-section active" id="section1">
+            <div class="section-header">
+                <div class="section-number float-animation">1</div>
+                <div class="section-title-wrapper">
+                    <div class="section-title slide-in-right">Client Details</div>
+                    <div class="section-subtitle slide-in-right" data-delay="0.1s">Tell us about yourself</div>
+                </div>
+            </div>
+
+            <div class="field-grid two-col">
+                <div class="field-group" id="grp-date">
+                    <label class="field-label fade-in-up">Date <span class="req">*</span></label>
+                    <input type="date" class="field-input" id="dateField" placeholder="Click to select date">
+                    <div class="focus-line"></div>
+                    <span class="error-msg">Please select a date</span>
+                </div>
+
+                <div class="field-group" id="grp-name">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <label class="field-label fade-in-up">Client Name <span class="req">*</span></label>
+                        <span class="field-count" id="nameCount">0/30</span>
+                    </div>
+                    <input type="text" class="field-input" id="nameField" placeholder="Enter full name (max 30 characters)" maxlength="30">
+                    <div class="focus-line"></div>
+                    <span class="field-hint">Enter full name</span>
+                    <span class="error-msg">Please enter your name</span>
+                </div>
+
+                <div class="field-group" id="grp-phone">
+                    <label class="field-label fade-in-up">Contact Number <span class="req">*</span></label>
+                    <input type="tel" class="field-input" id="phoneField" placeholder="Enter 10-digit mobile number" maxlength="10">
+                    <div class="focus-line"></div>
+                    <span class="error-msg">Please enter a valid 10-digit number</span>
+                </div>
+
+                <div class="field-group" id="grp-email">
+                    <label class="field-label fade-in-up">Email Address</label>
+                    <input type="email" class="field-input" id="emailField" placeholder="name@domain.com">
+                    <div class="focus-line"></div>
+                    <span class="error-msg">Please enter a valid email</span>
+                </div>
+
+                <div class="field-group" id="grp-event-type">
+                    <label class="field-label fade-in-up">Event Type <span class="req">*</span></label>
+                    <div class="select-wrap">
+                        <select class="field-input field-select" id="eventTypeField">
+                            <option value="">Select event type</option>
+                            <option value="Wedding">Wedding</option>
+                            <option value="Pre-Wedding">Pre-Wedding</option>
+                            <option value="Event Shoot">Event Shoot</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="focus-line"></div>
+                    </div>
+                    <span class="error-msg">Please select an event type</span>
+                </div>
+            </div>
+
+            <div class="btn-row single">
+                <button class="btn btn-next hover-glow" onclick="goNext(1)">
+                    Next &nbsp;→
+                </button>
+            </div>
+        </div>
+
+        <!-- ══ SECTION 2: Event Details ══ -->
+        <div class="form-section" id="section2">
+            <div class="section-header">
+                <div class="section-number float-animation">2</div>
+                <div class="section-title-wrapper">
+                    <div class="section-title slide-in-right">Event Details</div>
+                    <div class="section-subtitle slide-in-right" data-delay="0.1s">Location, timing & budget</div>
+                </div>
+            </div>
+
+            <div class="field-grid two-col">
+                <div class="field-group" id="grp-event-date">
+                    <label class="field-label fade-in-up">Event Date &amp; Time <span class="req">*</span></label>
+                    <input type="datetime-local" class="field-input" id="eventDateField">
+                    <div class="focus-line"></div>
+                    <span class="error-msg">Please select event date & time</span>
+                </div>
+
+                <div class="field-group" id="grp-location">
+                    <label class="field-label fade-in-up">Event Location <span class="req">*</span></label>
+                    <input type="text" class="field-input" id="locationField" placeholder="Enter event venue details">
+                    <div class="focus-line"></div>
+                    <span class="error-msg">Please enter the event location</span>
+                </div>
+
+                <div class="field-group" id="grp-budget">
+                    <label class="field-label fade-in-up">Package Budget <span class="req">*</span></label>
+                    <div class="currency-wrap">
+                        <span class="currency-sym">₹</span>
+                        <input type="number" class="field-input" id="budgetField" placeholder="Enter budget amount" min="0">
+                        <div class="focus-line"></div>
+                    </div>
+                    <span class="error-msg">Please enter a budget amount</span>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label fade-in-up">Advance / Pending Amount</label>
+                    <div class="currency-wrap">
+                        <span class="currency-sym">₹</span>
+                        <input type="number" class="field-input" id="advanceField" placeholder="Optional field">
+                        <div class="focus-line"></div>
+                    </div>
+                    <span class="field-hint">Optional field</span>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-prev hover-float" onclick="goPrev(2)">
+                    ← Previous
+                </button>
+                <button class="btn btn-next hover-glow" onclick="goNext(2)">
+                    Next &nbsp;→
+                </button>
+            </div>
+        </div>
+
+        <!-- ══ SECTION 3: Final Details ══ -->
+        <div class="form-section" id="section3">
+            <div class="section-header">
+                <div class="section-number float-animation">3</div>
+                <div class="section-title-wrapper">
+                    <div class="section-title slide-in-right">Final Details</div>
+                    <div class="section-subtitle slide-in-right" data-delay="0.1s">Requirements & delivery</div>
+                </div>
+            </div>
+
+            <div class="field-grid">
+                <div class="field-group">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <label class="field-label fade-in-up">Special Requirements</label>
+                        <span class="field-count" id="reqCount">0/500</span>
+                    </div>
+                    <textarea class="field-input" id="requirementsField" placeholder="Describe any special requirements or preferences..." maxlength="500"></textarea>
+                    <div class="focus-line"></div>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label fade-in-up">Team Members Required</label>
+                    <div class="counter-wrap">
+                        <button type="button" class="counter-btn hover-float" onclick="changeCount(-1)">−</button>
+                        <div class="counter-display" id="teamCount">1</div>
+                        <button type="button" class="counter-btn hover-float" onclick="changeCount(1)">+</button>
+                    </div>
+                    <span class="field-hint" style="margin-top:6px">Photographers / Videographers · Recommended: 1–3 for events, 2–4 for weddings</span>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label fade-in-up">Delivery Date</label>
+                    <div class="delivery-pills">
+                        <input type="radio" name="delivery" id="d1" value="1 Week" class="pill-input">
+                        <label for="d1" class="pill-label hover-float">1 Week</label>
+                        <input type="radio" name="delivery" id="d2" value="2 Weeks" class="pill-input">
+                        <label for="d2" class="pill-label hover-float">2 Weeks</label>
+                        <input type="radio" name="delivery" id="d3" value="1 Month" class="pill-input" checked>
+                        <label for="d3" class="pill-label hover-float">1 Month</label>
+                        <input type="radio" name="delivery" id="d4" value="2 Months" class="pill-input">
+                        <label for="d4" class="pill-label hover-float">2 Months</label>
+                        <input type="radio" name="delivery" id="d5" value="Custom" class="pill-input">
+                        <label for="d5" class="pill-label hover-float">Custom</label>
+                    </div>
+                    <span class="field-hint">Estimated delivery date for final products</span>
+                </div>
+
+                <div class="field-group">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <label class="field-label fade-in-up">Remarks</label>
+                        <span class="field-count" id="remarkCount">0/300</span>
+                    </div>
+                    <textarea class="field-input" id="remarksField" placeholder="Any additional notes or remarks..." maxlength="300" style="min-height:80px"></textarea>
+                    <div class="focus-line"></div>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-prev hover-float" onclick="goPrev(3)">
+                    ← Previous
+                </button>
+                <button class="btn btn-submit hover-glow" id="submitBtn" onclick="handleSubmit()">
+                    <span class="wa-icon">💬</span> Submit &amp; Send to WhatsApp
+                </button>
+            </div>
+        </div>
+
+        <!-- ══ SUCCESS ══ -->
+        <div id="successScreen">
+            <div class="success-content">
+                <div class="success-icon">
+                    <svg class="checkmark" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+                <div class="success-title">Record Submitted!</div>
+                <p class="success-msg">Your client details have been saved to Google Sheets and sent directly to WhatsApp. You may close this window.</p>
+                <div class="confetti-container">
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                </div>
+                <div class="success-badge float-animation">
+                    <span>✦</span> All information kept confidential <span>✦</span>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /card -->
+
+    <!-- ORNAMENT -->
+    <div class="ornament float-animation">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- SOCIAL FOOTER BUTTONS -->
+    <div class="social-footer">
+        <a href="https://instagram.com/wedforia" target="_blank" class="social-btn instagram hover-glow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+        </a>
+
+        <span class="social-center-text fade-in-up">Follow Us</span>
+
+        <a href="https://youtube.com/@wedforia" target="_blank" class="social-btn youtube hover-glow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            YouTube
+        </a>
+    </div>
+
+    <div class="note-bar fade-in-up">All information is kept confidential and used only for service coordination.</div>
+
+</div><!-- /page -->
+
+<!-- Transition Overlay -->
+<div class="transition-overlay" id="transitionOverlay"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
