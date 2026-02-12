@@ -1,19 +1,22 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    /* CUSTOMIZABLE HEADER COLORS - Change these to your preferred colors */
-   --header-brand-color: #B76E79;
---header-brand-gradient: linear-gradient(135deg, #B76E79, #D4A5A5);
---header-tagline-color: #D4A5A5;
---header-diamond-color: #B76E79;
---header-divider-color: #B76E79;
+    /* Rich Gold Color Palette - Keeping consistent gold theme */
+    --gold: #D4AF37;              /* Main rich gold */
+    --gold-light: #E6C158;        /* Light gold for highlights */
+    --gold-pale: #F8F0E3;         /* Pale gold for backgrounds */
+    --gold-dark: #B8941F;         /* Dark gold for depth */
+    --gold-glow: rgba(212, 175, 55, 0.4); /* Gold glow effect */
+    --gold-soft: rgba(212, 175, 55, 0.15); /* Soft gold for backgrounds */
+    --gold-shimmer: rgba(212, 175, 55, 0.6); /* Shimmer gold */
     
-    /* Enhanced Gold Palette */
-    --gold: #D4AF37;          
-    --gold-light: #E6C158;    
-    --gold-pale: #F8F0E3;     
-    --gold-dark: #B8941F;     
-    --gold-glow: rgba(212, 175, 55, 0.4);
+    /* Header Specific - All Gold Theme */
+    --header-brand-color: #D4AF37;        /* Rich gold brand name */
+    --header-brand-gradient: linear-gradient(135deg, #D4AF37, #E6C158); /* Gold gradient */
+    --header-tagline-color: #E6C158;       /* Light gold tagline */
+    --header-diamond-color: #D4AF37;       /* Gold diamond icon */
+    --header-divider-color: #D4AF37;       /* Gold divider line */
+    --header-headline-color: #FFFFFF;      /* White headline for contrast */
     
     /* Background Colors */
     --cream: #FFFCF5;         
@@ -88,7 +91,7 @@ body {
     position: absolute; inset: 0;
     background: radial-gradient(
         ellipse at 50% 0%, 
-        rgba(212, 175, 55, 0.05) 0%, 
+        var(--gold-glow) 0%, 
         transparent 70%
     );
     animation: shimmerPulse 12s ease-in-out infinite alternate;
@@ -98,10 +101,10 @@ body {
     to   { opacity: 0.5; }
 }
 
-/* Floating elements for depth */
+/* Floating elements for depth - Gold tint */
 .floating-element {
     position: absolute;
-    background: rgba(212, 175, 55, 0.08);
+    background: var(--gold-soft);
     border-radius: 50%;
     filter: blur(60px);
     z-index: 0;
@@ -156,7 +159,7 @@ body {
     background: transparent;
 }
 
-/* ── HEADER - Fully Customizable Colors ── */
+/* ── HEADER - Rich Gold Theme ── */
 header {
     width: 100%; max-width: 800px;
     padding: 36px 0 28px;
@@ -170,7 +173,7 @@ header {
     justify-content: center;
 }
 
-/* Logo image - Customizable border and glow */
+/* Logo image - Gold border and glow */
 .logo-img {
     width: 100px; height: 100px;
     border-radius: 12px;
@@ -179,7 +182,7 @@ header {
     filter: 
         drop-shadow(0 4px 16px var(--shadow-medium))
         drop-shadow(0 0 40px var(--shadow-light));
-    border: 2px solid var(--header-brand-color);
+    border: 2px solid var(--gold);
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     animation: pulseGlow 3s ease-in-out infinite;
@@ -194,8 +197,8 @@ header {
     }
     50% {
         filter: 
-            drop-shadow(0 4px 24px rgba(212, 175, 55, 0.8))
-            drop-shadow(0 0 60px rgba(212, 175, 55, 0.4));
+            drop-shadow(0 4px 24px var(--gold-glow))
+            drop-shadow(0 0 60px var(--shadow-medium));
         transform: scale(1.02);
     }
 }
@@ -205,13 +208,13 @@ header {
     animation: fadeInUp 0.8s ease-out;
 }
 
-/* Brand Name - Customizable Color */
+/* Brand Name - Rich Gold Gradient */
 .brand-name {
     font-family: 'Playfair Display', serif;
     font-size: clamp(38px, 7.5vw, 62px);
     font-weight: 800;
     letter-spacing: 0.25em;
-    background: var(--header-brand-gradient);
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -237,12 +240,12 @@ header {
     }
 }
 
-/* Brand Tagline - Customizable Color */
+/* Brand Tagline - Light Gold */
 .brand-tagline {
     font-family: 'Raleway', sans-serif;
     font-size: 13px;
     letter-spacing: 0.45em;
-    color: var(--header-tagline-color);
+    color: var(--gold-light);
     text-transform: uppercase;
     margin-top: 8px;
     font-weight: 800;
@@ -252,7 +255,7 @@ header {
     opacity: 0.95;
 }
 
-/* Header Divider - Customizable Color */
+/* Header Divider - Gold */
 .header-divider {
     display: flex; align-items: center; gap: 20px;
     width: 100%; max-width: 500px;
@@ -260,15 +263,15 @@ header {
 }
 .header-divider::before, .header-divider::after {
     content: ''; flex: 1; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--header-divider-color), transparent);
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
     box-shadow: 0 2px 8px var(--shadow-light);
 }
 .header-divider .diamond {
     width: 8px; height: 8px;
-    background: var(--header-diamond-color);
+    background: var(--gold);
     transform: rotate(45deg);
     box-shadow: 
-        0 0 12px var(--header-diamond-color),
+        0 0 12px var(--gold),
         0 0 24px var(--shadow-light);
     animation: spin 4s linear infinite;
 }
@@ -278,13 +281,13 @@ header {
     100% { transform: rotate(360deg); }
 }
 
-/* Form Headline - Customizable Color */
+/* Form Headline - White with gold glow */
 .form-headline {
     font-family: 'Playfair Display', serif;
     font-size: clamp(17px, 3.5vw, 23px);
     font-style: italic;
     font-weight: 600;
-    color: var(--header-headline-color);
+    color: #FFFFFF;
     letter-spacing: 0.1em;
     text-shadow: 
         0 1px 3px rgba(0, 0, 0, 0.8),
@@ -295,7 +298,7 @@ header {
     line-height: 1.4;
 }
 
-/* ── STEPPER ── */
+/* ── STEPPER - Gold Theme ── */
 .stepper {
     display: flex; align-items: center; gap: 0;
     margin-bottom: 40px;
@@ -355,7 +358,7 @@ header {
     }
     50% {
         box-shadow: 
-            0 0 35px rgba(212, 175, 55, 0.7),
+            0 0 35px var(--gold-glow),
             inset 0 2px 4px rgba(255, 255, 255, 0.15);
         transform: scale(1.05);
     }
@@ -392,7 +395,7 @@ header {
     font-weight: 900;
 }
 
-/* ── CARD ── */
+/* ── CARD - Gold Accents ── */
 .card {
     width: 100%; max-width: 720px;
     background: var(--glass);
@@ -442,7 +445,7 @@ header {
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.15),
+        rgba(212, 175, 55, 0.15),
         transparent
     );
     animation: cardShine 6s ease-in-out infinite;
@@ -454,7 +457,7 @@ header {
     100% { left: 200%; }
 }
 
-/* ── SECTION HEADER ── */
+/* ── SECTION HEADER - Gold Theme ── */
 .section-header {
     margin-bottom: 44px;
     display: flex; align-items: center; gap: 24px;
@@ -500,7 +503,6 @@ header {
 .section-subtitle {
     font-family: 'Raleway', sans-serif;
     font-size: 13px;
-    color: var(--soft);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 900;
@@ -511,7 +513,7 @@ header {
     background-clip: text;
 }
 
-/* ── FORM FIELDS ── */
+/* ── FORM FIELDS - Gold Focus ── */
 .form-section { 
     display: none;
     animation: fadeIn 0.5s ease-out;
@@ -534,17 +536,6 @@ header {
     to { 
         opacity: 1; 
         transform: translateX(0); 
-    }
-}
-
-@keyframes slideOutLeft {
-    from { 
-        opacity: 1; 
-        transform: translateX(0); 
-    }
-    to { 
-        opacity: 0; 
-        transform: translateX(-40px); 
     }
 }
 
@@ -673,7 +664,7 @@ header {
     top: 50%;
     transform: translateY(-50%);
     font-size: 18px; 
-    color: var(--soft);
+    color: var(--gold-dark);
     font-weight: 700;
     pointer-events: none;
     z-index: 1;
@@ -682,7 +673,7 @@ header {
     padding-left: 48px; 
 }
 
-/* Select arrow */
+/* Select arrow - Gold */
 .select-wrap { 
     position: relative; 
 }
@@ -702,7 +693,7 @@ header {
     transform: translateY(-50%) rotate(180deg);
 }
 
-/* ── DELIVERY PILLS ── */
+/* ── DELIVERY PILLS - Gold Theme ── */
 .delivery-pills { 
     display: flex; 
     flex-wrap: wrap; 
@@ -743,7 +734,7 @@ header {
     transform: translateY(-2px);
 }
 
-/* ── TEAM COUNTER ── */
+/* ── TEAM COUNTER - Gold Theme ── */
 .counter-wrap {
     display: flex; 
     align-items: center; 
@@ -799,7 +790,7 @@ header {
     border: none;
 }
 
-/* ── BUTTONS ── */
+/* ── BUTTONS - Gold Theme ── */
 .btn-row {
     display: flex; 
     align-items: center;
@@ -880,8 +871,8 @@ header {
 .btn-next:hover, .btn-submit:hover {
     background: linear-gradient(135deg, var(--gold-light), var(--gold));
     box-shadow: 
-        0 10px 32px rgba(212, 175, 55, 0.7),
-        0 16px 48px rgba(212, 175, 55, 0.4);
+        0 10px 32px var(--gold-glow),
+        0 16px 48px var(--shadow-medium);
     transform: translateY(-4px);
     border-color: var(--gold-light);
     color: var(--dark);
@@ -997,7 +988,7 @@ header {
     padding: 0 20px;
 }
 
-/* ── SUCCESS SCREEN ── */
+/* ── SUCCESS SCREEN - Gold Theme ── */
 #successScreen {
     display: none;
     text-align: center;
@@ -1034,6 +1025,7 @@ header {
     margin: 0 auto 36px;
     font-size: 42px;
     font-weight: 900;
+    color: var(--dark);
     box-shadow: 
         0 12px 40px var(--shadow-medium),
         0 0 80px var(--shadow-light),
@@ -1163,7 +1155,7 @@ header {
     animation: spin 4s linear infinite;
 }
 
-/* ── ORNAMENT ── */
+/* ── ORNAMENT - Gold ── */
 .ornament {
     font-family: 'Cormorant Garamond', serif;
     font-size: 28px;
@@ -1179,7 +1171,7 @@ header {
     animation: float 8s ease-in-out infinite;
 }
 
-/* ── PROGRESS BAR ── */
+/* ── PROGRESS BAR - Gold ── */
 .progress-bar-wrap {
     width: 100%; 
     max-width: 720px;
@@ -1230,7 +1222,7 @@ header {
     }
 }
 
-/* ── CONFIDENTIAL NOTE ── */
+/* ── CONFIDENTIAL NOTE - Gold Accent ── */
 .note-bar {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.8);
@@ -1274,7 +1266,7 @@ textarea.field-input {
     padding: 16px;
 }
 
-/* ── LOADING OVERLAY ── */
+/* ── LOADING OVERLAY - Gold Theme ── */
 .loading-overlay {
     position: fixed;
     inset: 0;
@@ -1347,7 +1339,7 @@ textarea.field-input {
     white-space: nowrap;
 }
 
-/* ── TRANSITION OVERLAY ── */
+/* ── TRANSITION OVERLAY - Gold ── */
 .transition-overlay {
     position: fixed;
     inset: 0;
@@ -1402,7 +1394,7 @@ textarea.field-input {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* ── FOCUS LINE EFFECT ── */
+/* ── FOCUS LINE EFFECT - Gold ── */
 .focus-line {
     position: absolute;
     bottom: 0;
